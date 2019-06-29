@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { StoreListService } from "../../services/store-list.service";
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private storeListService: StoreListService
+  ) { }
 
   ngOnInit() {
+    this.storeListService.getStore().then((res:any)=>{
+      console.log(res.result);
+    })
   }
 
 }
